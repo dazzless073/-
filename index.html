@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/head.css" type="text/css">
+    <link rel="stylesheet" href="style/song_list.css" type="text/css">
+    <link rel="stylesheet" href="style/socia_media.css" type="text/css">
+    <link rel="stylesheet" href="style/lyric.css" type="text/css">
+    <title>尘灰音乐</title>
+    <style type="text/css">
+        .main{
+            width:100%;
+            height: 710px;
+            background-color: rgb(233, 247, 255);
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="head">
+            <!-- 搜索 -->
+            <div class="search-box">
+                <input id="search-txt" type="text" placeholder=" 搜索歌曲"  v-model="query" @keyup.enter="searchMusic()" autocomplete="off">
+                <button class="search-btn" @click="searchMusic()"> <i class="fa fa-search"  ></i></button>
+            </div>
+            <!-- 社交媒体 -->
+            <div class="songVedio">
+                <a class="mv_btn" href="javascript:;" @click="hotMusic()">
+                  <i class="fa fa-youtube-play" ></i>
+                </a>
+            </div>
+        </div>
+        <div class="song_list">
+            <ul>
+                <li v-for="(item,index) in musicList">
+                    <a href="javascript:;"  @click="playMusic(item.id);getLyric(item.id)" ><i :id= "setSongId(index)" class="fa fa-play-circle"></i> </a>
+                    <b>{{item.name+'——'}}</b><b>{{item.artists[0].name}}</b>
+                </li>
+            </ul>
+        </div>
+        <div></div>
+        <div id="lyric_con" v-html="lyric"></div>
+        <div class="audio_con">
+            <audio ref="audic" :src="musicUrl" id="myaudio" loop controls autoplay></audio>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/song.js"></script>
+</body>
+</html>
