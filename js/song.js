@@ -1,6 +1,6 @@
 axios.defaults.baseURL = 'http://localhost:3000';
 var app = new Vue({
-    el: ".main",
+    el: "#home_page",
     data: {
       // 查询关键字
       query: "",
