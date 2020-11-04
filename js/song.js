@@ -43,7 +43,7 @@ var app = new Vue({
       isPlay:function(index){
             this.flag = !this.flag;
             var play = document.getElementById("play_btn"+index);
-            if(flag == true){
+            if(this.flag == true){
                 play.className="fa fa-play-circle";
             }else{
                 play.className="fa fa-pause-circle";
